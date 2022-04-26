@@ -4,7 +4,7 @@
   "description": "todo_app",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon src/server.js"
+    "start": "node src/server.js"
   },
   "author": "",
   "license": "ISC",
