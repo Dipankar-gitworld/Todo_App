@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import Form from "./Form";
 import ShowTodoList from "./ShowTodoList";
-import Navbar
-    from "./Navbar";
+import Navbar from "./Navbar";
+
+
 export default function Home() {
+    const API = process.env.React_App_MY_API;
     let [list, setList] = useState([]);
+
     useEffect(() => {
-        fetch("https://floating-reaches-51697.herokuapp.com")
+        fetch(`${API}`)
             .then(res => res.json())
             .then(data => setList(data))
             .catch(err => console.log(err))
 
     }, [])
     const getData = () => {
-        fetch("https://floating-reaches-51697.herokuapp.com")
+        fetch(`${API}`)
             .then(res => res.json())
             .then(data => setList(data))
             .catch(err => console.log(err))

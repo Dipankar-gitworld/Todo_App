@@ -2,15 +2,16 @@
 import { useState } from "react"
 import "./showList.css"
 
+
 export default function ShowTodoList({ list, getData }) {
     let [editFlag, setEditFlag] = useState(false);
     let [updateTodo, setUpdateTodo] = useState({});
-
-
+    const API = process.env.React_App_MY_API;
+    // console.log(API)
 
 
     const deleteTodo = (id) => {
-        fetch(`https://floating-reaches-51697.herokuapp.com/${id}`, {
+        fetch(`${API}/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -30,7 +31,7 @@ export default function ShowTodoList({ list, getData }) {
                 "status": false
 
             }
-            fetch(`https://floating-reaches-51697.herokuapp.com/${el._id}`, {
+            fetch(`${API}/${el._id}`, {
                 method: "PATCH",
                 body: JSON.stringify(payload),
                 headers: {
@@ -49,7 +50,7 @@ export default function ShowTodoList({ list, getData }) {
                 "status": true
 
             }
-            fetch(`https://floating-reaches-51697.herokuapp.com/${el._id}`, {
+            fetch(`${API}/${el._id}`, {
                 method: "PATCH",
                 body: JSON.stringify(payload),
                 headers: {
@@ -84,7 +85,7 @@ export default function ShowTodoList({ list, getData }) {
             "description": updateTodo.description
 
         }
-        fetch(`https://floating-reaches-51697.herokuapp.com/${id}`, {
+        fetch(`${API}/${id}`, {
             method: "PATCH",
             body: JSON.stringify(payload),
             headers: {

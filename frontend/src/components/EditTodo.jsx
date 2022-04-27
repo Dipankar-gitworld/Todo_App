@@ -6,9 +6,11 @@ export default function EditTodo() {
     let [todo, setTodo] = useState("")
     let [todo1, setTodo1] = useState("")
     let { id } = useParams();
+    const API = process.env.React_App_MY_API;
+
     useEffect(() => {
         console.log("id", id)
-        fetch(`https://floating-reaches-51697.herokuapp.com/${id}`)
+        fetch(`${API}/${id}`)
             .then(res => res.json())
             .then(data => {
                 setTodo(data.title)

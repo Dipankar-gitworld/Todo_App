@@ -2,7 +2,9 @@
 import { useState } from "react"
 import "./form.css";
 
+
 export default function Form({ getData }) {
+    const API = process.env.React_App_MY_API;
     let [isLoading, setIsLoading] = useState(false);
     let [form, setForm] = useState({
         title: "",
@@ -23,7 +25,7 @@ export default function Form({ getData }) {
             "status": false
         }
         setIsLoading(true);
-        fetch("https://floating-reaches-51697.herokuapp.com", {
+        fetch(`${API}`, {
             method: "POST",
             body: JSON.stringify(payload),
             headers: {
